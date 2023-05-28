@@ -1,0 +1,7 @@
+{
+  "name": "PDFxpress",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

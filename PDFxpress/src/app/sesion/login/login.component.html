@@ -1,0 +1,17 @@
+<!-- <p>
+  login works!
+</p> -->
+<h2>Login de usuario</h2>
+<form [formGroup]="formLogin" (ngSubmit)="onSubmit()"><!--[formGroup]="formLogin"-->
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="text" class="form-control" formControlName="email">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="password">
+    </div>
+    <input type="submit" value="Enviar">
+</form>
+<button class="btn btn-info" (click)="onClick()">Login With Google</button>
+<ion-button (click)="toRegister()">Register</ion-button>
