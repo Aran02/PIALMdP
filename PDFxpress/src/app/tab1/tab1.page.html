@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      My documents
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,6 +12,13 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" sizeMd="3" *ngFor="let photo of photos">
+        <ion-img [src]="photo" ></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>
