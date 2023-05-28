@@ -18,6 +18,10 @@ import { RegisterComponent } from './sesion/register/register.component';
 import { LoginComponent } from './sesion/login/login.component';
 import { Tab1Page } from './tab1/tab1.page';
 import { Tab2Page } from './tab2/tab2.page';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+
+
+
 
 
 @NgModule({
@@ -38,7 +42,9 @@ import { Tab2Page } from './tab2/tab2.page';
     provideFirebaseApp(() => initializeApp(environment.firebase)), 
     provideAuth(() => getAuth()), 
     provideDatabase(() => getDatabase()), 
-    provideFirestore(() => getFirestore())],
+    provideFirestore(() => getFirestore()), provideStorage(() => getStorage()),
+    
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

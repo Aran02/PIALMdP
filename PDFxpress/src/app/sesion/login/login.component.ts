@@ -30,6 +30,8 @@ export class LoginComponent  implements OnInit {
     this.userServices.login(this.formLogin.value)
     .then(response => {
       console.log(response);
+      this.router.navigate(['/tabs']);
+
     })
     .catch(error => console.log(error));
   }

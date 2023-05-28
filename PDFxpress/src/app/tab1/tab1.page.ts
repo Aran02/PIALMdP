@@ -15,6 +15,5 @@ export class Tab1Page {
   ) {
     this.photos = this.photosServices.photos
   }
-
-
+  
 }
