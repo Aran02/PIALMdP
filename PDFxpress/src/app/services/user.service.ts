@@ -6,18 +6,33 @@ import { Auth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEma
 })
 export class UserService {
 
+  currentUser: any;
+
   constructor(private auth: Auth) { }
 
   register({ email, password }: any) {
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
 
+  // login({ email, password }: any) {
+  //   return signInWithEmailAndPassword(this.auth, email, password);
+  // }
+
+  // loginWithGoogle() {
+  //   return signInWithPopup(this.auth, new GoogleAuthProvider());
+  // }
   login({ email, password }: any) {
-    return signInWithEmailAndPassword(this.auth, email, password);
+    return signInWithEmailAndPassword(this.auth, email, password)
+      .then((userCredential) => {
+        this.currentUser = userCredential.user; // Guardar el usuario actual
+      });
   }
 
   loginWithGoogle() {
-    return signInWithPopup(this.auth, new GoogleAuthProvider());
+    return signInWithPopup(this.auth, new GoogleAuthProvider())
+      .then((userCredential) => {
+        this.currentUser = userCredential.user; // Guardar el usuario actual
+      });
   }
 
   logout() {

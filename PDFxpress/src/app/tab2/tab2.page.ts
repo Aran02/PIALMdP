@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PhotosService } from '../services/photos.service';
 
 import { Storage, ref, uploadBytes } from '@angular/fire/storage';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-tab2',
@@ -14,40 +15,29 @@ export class Tab2Page {
 
   constructor(
     private photosService: PhotosService,
-    private storage: Storage
+    private storage: Storage,
+    private userService: UserService
   ) {
-    this.photos = []
+    this.photos = [];
   }
 
-  async takePhoto(){
+  async takePhoto() {
     await this.photosService.addNewPhoto();
     const latestPhoto = this.photosService.photos[0];
     this.uploadPhoto(latestPhoto);
   }
 
-  // uploadImage($event: any) {
-  //   const file = $event.target.files[0];
-  //   console.log(file);
-
-  //   const imgRef = ref(this.storage, `images/${file.name}`);
-
-  //   uploadBytes(imgRef, file)
-  //     .then(response => {
-  //       console.log(response)
-  //       // this.getImages();
-  //     })
-  //     .catch(error => console.log(error));
-      
-      
-  // }
-
   async uploadPhoto(photo: string) {
-    const imgRef = ref(this.storage, `images/${photo}`);
+
+    const userId = this.userService.currentUser.uid; // Obtener el ID del usuario actual
+
+
+    // const imgRef = ref(this.storage, `images/${photo}`);
+    const imgRef = ref(this.storage, `images/${userId}/${photo}`); // Crear una carpeta única para el usuario
 
     const response = await fetch(photo);
     const blob = await response.blob();
 
-    // Realiza el proceso de carga de la foto a tu almacenamiento aquí
     uploadBytes(imgRef, blob)
       .then(uploadTaskSnapshot => {
         console.log('Upload is complete!', uploadTaskSnapshot);
