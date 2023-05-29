@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { PhotosService } from '../services/photos.service';
 import { Storage, getDownloadURL, listAll, ref } from '@angular/fire/storage';
 
+import { UserService } from '../services/user.service';
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -13,7 +15,8 @@ export class Tab1Page {
 
   constructor(
     private photosServices: PhotosService,
-    private storage: Storage
+    private storage: Storage,
+    private userService: UserService
   ) {
     this.photos = this.photosServices.photos
   }
@@ -23,7 +26,9 @@ export class Tab1Page {
   }
 
   getImages() {
-    const imagesRef = ref(this.storage, 'images');
+    // const userId = this.userService.currentUser.uid; // Obtener el ID del usuario actual
+
+    const imagesRef = ref(this.storage, `images`);///${userId}
 
     listAll(imagesRef)
       .then(async response => {
@@ -37,4 +42,5 @@ export class Tab1Page {
       .catch(error => console.log(error));
   }
 
+  
 }

@@ -6,6 +6,8 @@ import { Auth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEma
 })
 export class UserService {
 
+  
+
   currentUser: any;
 
   constructor(private auth: Auth) { }
