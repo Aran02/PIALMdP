@@ -1,7 +1,8 @@
 <style>
-    body {
+        body {
       background-color: #047aed;
     }
+  
     .container {
       display: flex;
       justify-content: center;
@@ -10,14 +11,14 @@
     }
   
     .login-box2 {
-      background-color: #ece810;
+      background-color: #292929;
       padding: 60px;
       border-radius: 40px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     .login-box {
-      background-color: #10ecec;
+      background-color: #3b3b3b;
       padding: 60px;
       border-radius: 30px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -25,7 +26,7 @@
   
     .login-title {
       text-align: center;
-      color: #130116;
+      color: #c6c6c6;
     }
   
     .login-form {
@@ -33,15 +34,15 @@
     }
   
     .login-input {
-      background-color: #f8f4f8;
+      background-color: #252525;
       border: none;
-      padding: 10px;
+      padding: 10px 20px 10px 20px;
       margin-bottom: 10px;
     }
   
     .login-submit {
-      background-color: #faf8f8;
-      color: #0464c4;
+      background-color: #1f1f1f;
+      color: #d0d0d0;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
@@ -71,18 +72,21 @@
   
       <form [formGroup]="formReg" (ngSubmit)="onSubmit()" class="login-form">
         <div class="mb-3">
-          <label class="form-label">Email</label>
-          <ion-input label="Email" placeholder="Enter text" label-placement="floating" type="text" class="login-input" formControlName="email"></ion-input>
+          <!-- <label class="form-label">Email</label> -->
+          <ion-input label="Email" placeholder="Enter your email" label-placement="floating" type="text" class="login-input" formControlName="email"></ion-input>
         </div>
         <br />
         <div class="mb-3">
-          <label class="form-label">Password</label>
-          <ion-input  label="Password" placeholder="Enter text" label-placement="floating" type="password" class="login-input" formControlName="password"></ion-input>
+          <!-- <label class="form-label">Password</label> -->
+          <ion-input  label="Password" placeholder="Create a password" label-placement="floating" type="password" class="login-input" formControlName="password"></ion-input>
         </div>
   
         <input type="submit" value="Enviar" class="login-submit">
       </form>
-  
+      
+      <div>¿Ya tienes una cuenta aquí?</div>
+
+
       <ion-button class="register-button" (click)="toLogin()">Login</ion-button>
       </div>
     </div>
