@@ -41,6 +41,7 @@ export class LoginComponent  implements OnInit {
     .then(response => {
       console.log(response);
       this.router.navigate(['/tabs']);
+
     })
     .catch(error => console.log(error))
   }
